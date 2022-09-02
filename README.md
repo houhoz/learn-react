@@ -1,132 +1,132 @@
 # Learn React in 5 minutes
 
-1.  Create React App  
-    `npx create-react-app react-app`  
-     or  
-     `yarn create react-app react-app`
+1. Create React App  
+   `npx create-react-app react-app`  
+    or  
+    `yarn create react-app react-app`
 
-2.  Functional Component
+2. Functional Component
 
-    ```js
-    const Component = () => {
-      return <div>Hello World</div>
-    }
-    ```
+   ```js
+   const Component = () => {
+     return <div>Hello World</div>
+   }
+   ```
 
-3.  Importing a component
+3. Importing a component
 
-    ```js
-    // Component.js
-    function Component() {
-      return <div>Hello World</div>
-    }
-    export default Component
+   ```js
+   // Component.js
+   function Component() {
+     return <div>Hello World</div>
+   }
+   export default Component
 
-    // App.js
-    import { Component } from './components/Component'
-    function App() {
-      return <Component />
-    }
-    ```
+   // App.js
+   import { Component } from './components/Component'
+   function App() {
+     return <Component />
+   }
+   ```
 
-4.  Lazy loading
+4. Lazy loading
 
-    ```js
-    // Component.js
-    function Component() {
-      return <div>Hello World</div>
-    }
-    export default Component
+   ```js
+   // Component.js
+   function Component() {
+     return <div>Hello World</div>
+   }
+   export default Component
 
-    // App.js
-    import { lazy, Suspense } from 'react'
-    const Component = lazy(() => import('./components/Component'))
-    function App() {
-      return (
-        <Suspense fallBack={<div>loading...</div>}>
-          <Component />
-        </Suspense>
-      )
-    }
-    ```
+   // App.js
+   import { lazy, Suspense } from 'react'
+   const Component = lazy(() => import('./components/Component'))
+   function App() {
+     return (
+       <Suspense fallBack={<div>loading...</div>}>
+         <Component />
+       </Suspense>
+     )
+   }
+   ```
 
-5.  Component properties
+5. Component properties
 
-    - These are the values with which the component is initialized. Props are accepted as the function parameter.
+   - These are the values with which the component is initialized. Props are accepted as the function parameter.
 
-    ```js
-    // no props
-    function App() {
-      return <Person name='Mike' age={19} />
-    }
+   ```js
+   // no props
+   function App() {
+     return <Person name='Mike' age={19} />
+   }
 
-    // with props
-    const Person = props => {
-      return (
-        <h1>
-          Name: {props.name}, Age: {props.age}
-        </h1>
-      )
-    }
+   // with props
+   const Person = props => {
+     return (
+       <h1>
+         Name: {props.name}, Age: {props.age}
+       </h1>
+     )
+   }
 
-    // with destructured props
-    const Person = ({ name, age }) => {
-      return (
-        <h1>
-          Name: {name}, Age: {age}
-        </h1>
-      )
-    }
-    ```
+   // with destructured props
+   const Person = ({ name, age }) => {
+     return (
+       <h1>
+         Name: {name}, Age: {age}
+       </h1>
+     )
+   }
+   ```
 
-6.  Prop Destructuring.
+6. Prop Destructuring.
 
-    - Person is a component that accepts a name prop.
+   - Person is a component that accepts a name prop.
 
-    ```js
-    function App() {
-      return person.map(({ id, ...props }) => <Person key={id} {...props} />)
-    }
-    ```
+   ```js
+   function App() {
+     return person.map(({ id, ...props }) => <Person key={id} {...props} />)
+   }
+   ```
 
-7.  Events
+7. Events
 
-    ```js
-    const clickHandler = () => alert('hello')
-    function App() {
-      return (
-        <>
-          <h1>Welcome to my app</h1>
-          <button onClick={clickHandler}>Say Hi</button>
-        </>
-      )
-    }
-    ```
+   ```js
+   const clickHandler = () => alert('hello')
+   function App() {
+     return (
+       <>
+         <h1>Welcome to my app</h1>
+         <button onClick={clickHandler}>Say Hi</button>
+       </>
+     )
+   }
+   ```
 
-8.  Hooks.
+8. Hooks.
 
-    - Hooks are functions that let you “hook into” React state and lifecycle features from function components.
-    - Rules of hooks.
+   - Hooks are functions that let you “hook into” React state and lifecycle features from function components.
+   - Rules of hooks.
 
-    ✅ Hooks must be invoked only inside a React functional component.  
-    ✅ Hooks must be only called at the top level of a functional component.  
-    ✅ Declaration CAN NOT be called conditionally.
+   ✅ Hooks must be invoked only inside a React functional component.  
+   ✅ Hooks must be only called at the top level of a functional component.  
+   ✅ Declaration CAN NOT be called conditionally.
 
-9.  useState Hook
+9. useState Hook
 
-    - useState is a hook that lets you manage the state in a functional component.
+   - useState is a hook that lets you manage the state in a functional component.
 
-    ```js
-    function App() {
-      const [count, setCount] = useState(0)
-      return (
-        <div>
-          <p>you clicked {count} times</p>
-          <button onClick={() => setCount(count + 1)}>click me</button>
-        </div>
-      )
-    }
-    ```
+   ```js
+   function App() {
+     const [count, setCount] = useState(0)
+     return (
+       <div>
+         <p>you clicked {count} times</p>
+         <button onClick={() => setCount(count + 1)}>click me</button>
+       </div>
+     )
+   }
+   ```
 
 10. useEffect Hook
 
