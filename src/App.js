@@ -1,6 +1,4 @@
 import { lazy, Suspense, createContext, useReducer } from 'react'
-import logo from './logo.svg'
-import './App.css'
 
 export const ThemeContext = createContext('light')
 
@@ -52,28 +50,14 @@ function App() {
   }, 0)
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-        <p>{count}</p>
-        <button onClick={() => dispatch('increment')}>+</button>
-        <button onClick={() => dispatch('decrement')}>-</button>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ThemeContext.Provider value='light'>
-            <Component />
-          </ThemeContext.Provider>
-        </Suspense>
-      </header>
+      <p>{count}</p>
+      <button onClick={() => dispatch('increment')}>+</button>
+      <button onClick={() => dispatch('decrement')}>-</button>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ThemeContext.Provider value='light'>
+          <Component />
+        </ThemeContext.Provider>
+      </Suspense>
     </div>
   )
 }
