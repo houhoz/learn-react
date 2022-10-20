@@ -1,65 +1,75 @@
-import { lazy, Suspense, createContext, useReducer } from 'react'
+import React from 'react'
+import styled from 'styled-components'
+import { Routes, Route, Link } from 'react-router-dom'
 
-export const ThemeContext = createContext('light')
+import { ShopProvider } from './ShopContext'
+import Products from './Products'
+import Cart from './Cart'
 
-const Component = lazy(() => import('./components/Component'))
-
-/** 
-## Hooks
-- Hooks 是让你从函数组件中“钩入”React 状态和生命周期特性的函数。
-- 钩子规则。
-Hooks 只能在 React 功能组件内部调用。
-挂钩只能在功能组件的顶层调用。不能有条件地调用声明。
- 
-## useState Hook
-- useState 是一个钩子，可让您管理功能组件中的状态。
-
-## useEffect Hook
-- useEffect 是一个钩子，可让您访问功能组件中的生命周期方法
-
-## useContext
-- useContext 是一个钩子，它返回给定上下文的数据。
-
-## useReducer
-- useReducer 是一个钩子，可让您管理功能组件中的状态，但与 useState 不同，它使用 Redux 模式。
-
-## useCallback
-- useCallback 挂钩返回回调的记忆版本，其唯一目的是优化性能。
-
-## useMemo
-- useMemo 钩子返回回调产生的值的记忆版本。就像 useCallback 一样，useMemo 是一个性能优化钩子。
-
-## useRef
-- useRef 挂钩返回一个可变的 ref 对象，其 .current 属性初始化为传递的参数 (initialValue)。
-
-## useTransition
-- useTransition 挂钩可让您将不太紧急的操作标记为过渡。
-
-**/
-
-function App() {
-  const [count, dispatch] = useReducer((state, action) => {
-    switch (action) {
-      case 'increment':
-        return state + 1
-      case 'decrement':
-        return state - 1
-      default:
-        throw new Error()
-    }
-  }, 0)
+const App = () => {
   return (
-    <div className='App'>
-      <p>{count}</p>
-      <button onClick={() => dispatch('increment')}>+</button>
-      <button onClick={() => dispatch('decrement')}>-</button>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ThemeContext.Provider value='light'>
-          <Component />
-        </ThemeContext.Provider>
-      </Suspense>
-    </div>
+    <React.Fragment>
+      <ShopProvider>
+        <Wrapper>
+          <TitleWrapper>
+            <h1>useReducer Hook</h1>
+            <p>
+              A <a href='https://designcode.io/'>Design+Code</a> tutorial
+            </p>
+          </TitleWrapper>
+          <LinksWrapper>
+            <Link to='/'>Home</Link>
+            <Link to='/cart'>Cart</Link>
+          </LinksWrapper>
+        </Wrapper>
+        <Routes>
+          <Route path='/' element={<Products />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+      </ShopProvider>
+    </React.Fragment>
   )
 }
 
 export default App
+
+const Wrapper = styled.div`
+  font-family: 'Roboto';
+  margin: 40px;
+
+  display: grid;
+  row-gap: 20px;
+  justify-content: center;
+`
+
+const TitleWrapper = styled.div`
+  * {
+    margin: 0;
+  }
+
+  display: grid;
+  row-gap: 10px;
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
+`
+
+const LinksWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+
+  a {
+    text-decoration: none;
+    color: #bb7250;
+
+    :hover {
+      color: #bb7250;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+`
