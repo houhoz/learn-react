@@ -1,5 +1,13 @@
 # Learn React in 5 minutes
 
+# TODO
+
+- [ ] useCallback useMemo？？？
+- [x] 使用 useContext useReducer 构建全局状态管理
+- [ ] 自定义 hooks
+- [x] test
+
+
 1. Create React App  
    `npx create-react-app react-app`  
     or  
