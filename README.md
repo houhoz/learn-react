@@ -1,12 +1,13 @@
 # Learn React in 5 minutes
 
-# TODO
+## TODO
 
 - [ ] useCallback useMemo？？？
-- [x] 使用 useContext useReducer 构建全局状态管理
+- [x] 使用 useContext useReducer 构建全局状态管理 [reducer分支]( https://github.com/houhoz/learn-react/tree/reducer)
 - [ ] 自定义 hooks
 - [x] test
 
+## 正文
 
 1. Create React App  
    `npx create-react-app react-app`  
